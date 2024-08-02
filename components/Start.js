@@ -1,6 +1,6 @@
 import { StyleSheet, View, Text, Button, TextInput } from "react-native";
 
-const Screen1 = ({ navigation }) => {
+const Start = ({ navigation }) => {
   const [name, setName] = useState("");
   return (
     <View style={styles.container}>
@@ -34,4 +34,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Screen1;
+export default Start;
