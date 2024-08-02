@@ -12,7 +12,7 @@ const Start = ({ navigation }) => {
         placeholder="Type your username here"
       />
       <Button
-        title="Go to Screen 2"
+        title="Enter Chat Room"
         onPress={() => navigation.navigate("Screen2", { name: name })}
       />
     </View>
