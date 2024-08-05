@@ -1,7 +1,11 @@
 import { StyleSheet, TextInput, View, Text, Alert, Button } from "react-native";
 import { useState } from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Start from "./components/Start";
 import Chat from "./components/Chat";
+
+const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
