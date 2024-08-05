@@ -31,7 +31,7 @@ const Start = ({ navigation }) => {
               style={styles.textInput}
               value={name}
               onChangeText={setName}
-              placeholder="Your name"
+              placeholder="Enter Your Name Here"
               placeholderTextColor="#757083"
             />
           </View>
