@@ -11,9 +11,7 @@ import {
 import imageBackground from "../images/background-img.png";
 
 const Start = ({ navigation }) => {
-  const [name, setName] = useState("");
-  const [background, setBackground] = useState("");
-  const [backgroundColor, setBackgroundColor] = useState("");
+  const [name, setName] = useState("");  const [backgroundColor, setBackgroundColor] = useState("");
 
   return (
     <View style={styles.container}>
@@ -41,19 +39,19 @@ const Start = ({ navigation }) => {
           <View style={styles.colorButtonsContainer}>
             <TouchableOpacity
               style={[styles.colorButton, { backgroundColor: "#add99e" }]}
-              onPress={() => setBackground("#add99e")}
+              onPress={() => setBackgroundColor("#add99e")}
             />
             <TouchableOpacity
               style={[styles.colorButton, { backgroundColor: "#67c2e0" }]}
-              onPress={() => setBackground("#67c2e0")}
+              onPress={() => setBackgroundColor("#67c2e0")}
             />
             <TouchableOpacity
               style={[styles.colorButton, { backgroundColor: "#b36eeb" }]}
-              onPress={() => setBackground("#b36eeb")}
+              onPress={() => setBackgroundColor("#b36eeb")}
             />
             <TouchableOpacity
               style={[styles.colorButton, { backgroundColor: "#ffc0cb" }]}
-              onPress={() => setBackground("#ffc0cb")}
+              onPress={() => setBackgroundColor("#ffc0cb")}
             />
           </View>
           {/* Button to start chatting */}
