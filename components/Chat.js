@@ -1,10 +1,36 @@
 import { useEffect, useState } from "react";
-import { GiftedChat } from "react-native-gifted-chat";
-import { StyleSheet, View, Text, KeyboardAvoidingView, Platform } from "react-native";
+import { GiftedChat, Bubble } from "react-native-gifted-chat";
+import {
+  StyleSheet,
+  View,
+  Text,
+  KeyboardAvoidingView,
+  Platform,
+} from "react-native";
 
 const Chat = ({ route, navigation }) => {
   const [messages, setMessages] = useState([]);
   const { name, backgroundColor } = route.params;
+  const onSend = (newMessages) => {
+    setMessages((previousMessages) =>
+      GiftedChat.append(previousMessages, newMessages)
+    );
+  };
+  const renderBubble = (props) => {
+    return (
+      <Bubble
+        {...props}
+        wrapperStyle={{
+          right: {
+            backgroundColor: "#000",
+          },
+          left: {
+            backgroundColor: "#FFF",
+          },
+        }}
+      />
+    );
+  };
 
   useEffect(() => {
     navigation.setOptions({ title: name });
@@ -19,6 +45,12 @@ const Chat = ({ route, navigation }) => {
           avatar: "https://placeimg.com/140/140/any",
         },
       },
+      {
+        _id: 2,
+        text: "Welcome to Your Chat",
+        createdAt: new Date(),
+        system: true,
+      },
     ]);
   }, []);
 
@@ -26,12 +58,15 @@ const Chat = ({ route, navigation }) => {
     <View style={[styles.container, { backgroundColor: backgroundColor }]}>
       <GiftedChat
         messages={messages}
-        onSend={messages => onSend(messages)}
+        renderBubble={renderBubble}
+        onSend={(messages) => onSend(messages)}
         user={{
-          _id: 1
+          _id: 1,
         }}
       />
-      { Platform.OS === 'android' ? <KeyboardAvoidingView behavior="height" /> : null }
+      {Platform.OS === "android" ? (
+        <KeyboardAvoidingView behavior="height" />
+      ) : null}
     </View>
   );
 };

@@ -11,7 +11,8 @@ import {
 import imageBackground from "../images/background-img.png";
 
 const Start = ({ navigation }) => {
-  const [name, setName] = useState("");  const [backgroundColor, setBackgroundColor] = useState("");
+  const [name, setName] = useState("");
+  const [backgroundColor, setBackgroundColor] = useState("");
 
   return (
     <View style={styles.container}>
