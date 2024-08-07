@@ -93,13 +93,14 @@ const styles = StyleSheet.create({
     color: "#757083",
   },
   containerWhite: {
-    width: "88%",
-    height: "44%",
+    width: "80%",
+    height: "40%",
     justifyContent: "center",
     backgroundColor: "white",
     bottom: 0,
     alignItems: "center",
-    marginBottom: "6%",
+    marginBottom: "40%",
+    marginLeft: 20,
   },
   text: {
     padding: "25%",
