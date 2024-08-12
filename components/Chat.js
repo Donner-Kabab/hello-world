@@ -66,7 +66,7 @@ const Chat = ({ route, navigation, db }) => {
         onSend={(messages) => onSend(messages)}
         user={{
           _id: userID,
-          name: username,
+          name: name,
         }}
       />
       {Platform.OS === "android" ? (
