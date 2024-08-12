@@ -6,7 +6,7 @@ import {
   addDoc,
   onSnapshot,
   query,
-  where,
+  orderBy,
 } from "firebase/firestore";
 import {
   StyleSheet,
@@ -43,11 +43,15 @@ const Chat = ({ route, navigation, db }) => {
   useEffect(() => {
     navigation.setOptions({ title: name });
 
-    const q = query(collection(db, "messages"), where("uid", "==", userID));
+    const q = query(collection(db, "messages"), orderBy("createdAt", "desc"));
     const unsubMessages = onSnapshot(q, (documentsSnapshot) => {
       let newMessages = [];
       documentsSnapshot.forEach((doc) => {
-        newMessages.push({ id: doc.id, ...doc.data() });
+        newMessages.push({
+          id: doc.id,
+          ...doc.data(),
+          createdAt: new Date(doc.data().createdAt.toMillis()),
+        });
       });
       setMessages(newMessages);
     });
