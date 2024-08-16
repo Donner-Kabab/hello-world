@@ -10,6 +10,7 @@ import {
 import { useState, useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { getStorage } from "firebase/storage";
 
 const Stack = createNativeStackNavigator();
 
@@ -38,6 +39,7 @@ const App = () => {
 
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
+  const storage = getStorage(app);
 
   // Initialize Cloud Firestore and get a reference to the service
   const db = getFirestore(app);
@@ -61,6 +63,7 @@ const App = () => {
             <Chat
               isConnected={connectionStatus.isConnected}
               db={db}
+              storage={storage}
               {...props}
             />
           )}

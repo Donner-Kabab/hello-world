@@ -12,7 +12,7 @@ import * as Location from "expo-location";
 import MapView from "react-native-maps";
 import { useActionSheet } from "expo/react-native-action-sheet";
 
-const CustomActions = ({ wrapperStyle, iconTextStyle, onSend }) => {
+const CustomActions = ({ wrapperStyle, iconTextStyle, onSend, storage }) => {
   const actionSheet = useActionSheet();
   const [image, setImage] = useState(null);
   const [location, setLocation] = useState(null);
@@ -47,9 +47,11 @@ const CustomActions = ({ wrapperStyle, iconTextStyle, onSend }) => {
     let permissions = await ImagePicker.requestMediaLibraryPermissionsAsync();
     if (permissions?.granted) {
       let result = await ImagePicker.launchImageLibraryAsync();
-
-      if (!result.canceled) setImage(result.assets[0]);
-      else setImage(null);
+      if (!result.canceled) {
+        const imageURI = result.assets[0].uri;
+        const response = await fetch(imageURI);
+        const blob = await response.blob();
+      } else Alert.alert("Permissions haven't been granted.");
     }
   };
 
