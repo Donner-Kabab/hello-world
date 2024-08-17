@@ -6,3 +6,16 @@ To build a chat app for mobile devices using React Native. The app will provide 
 2. A page displaying the conversation, as well as an input field and submit button.
 3. The chat must provide users with two additional communication features: sending images and location data.
 4. Data gets stored online and offline.
+
+### Dependencies
+1. React Native
+2. Expo
+3. Firebase
+4. Gifted Chat
+5. AsyncStorage
+
+### Install
+1. node
+2. nvm
+3. npm
+4. Expo Go
