@@ -19,7 +19,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import CustomActions from "./CustomActions";
 import MapView from "react-native-maps";
 
-const Chat = ({ route, navigation, db, isConnected }) => {
+const Chat = ({ route, navigation, db, isConnected, storage }) => {
   const [messages, setMessages] = useState([]);
   const { name, backgroundColor, userID } = route.params;
 
@@ -33,7 +33,7 @@ const Chat = ({ route, navigation, db, isConnected }) => {
   };
 
   const renderCustomActions = (props) => {
-    return <CustomActions storage={storage} {...props} />;
+    return <CustomActions userID={userID} storage={storage} {...props} />;
   };
 
   const renderCustomView = (props) => {
@@ -91,7 +91,7 @@ const Chat = ({ route, navigation, db, isConnected }) => {
         cacheMessages(newMessages);
         setMessages(newMessages);
       });
-    } else loadCachedLists();
+    } else loadCachedMessages();
 
     // Clean up code
     return () => {
@@ -107,9 +107,9 @@ const Chat = ({ route, navigation, db, isConnected }) => {
     }
   };
 
-  const loadCachedLists = async () => {
-    const cachedLists = (await AsyncStorage.getItem("messages")) || [];
-    setLists(JSON.parse(cachedLists));
+  const loadCachedMessages = async () => {
+    const loadCachedMessages = (await AsyncStorage.getItem("messages")) || [];
+    setMessages(JSON.parse(cachedMessages));
   };
 
   return (
