@@ -38,14 +38,16 @@ const CustomActions = ({
       async (buttonIndex) => {
         switch (buttonIndex) {
           case 0:
-            console.log("user wants to pick an image");
-            return;
+            await pickImage();
+            break;
           case 1:
-            console.log("user wants to take a photo");
-            return;
+            await takePhoto();
+            break;
           case 2:
-            console.log("user wants to get their location");
+            await getLocation();
+            break;
           default:
+            break;
         }
       }
     );
